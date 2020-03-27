@@ -1,0 +1,90 @@
+/*general style*/
+body{
+    display: flex;
+    flex-flow: column;
+    background-color: rgb(17, 88, 155);
+}
+
+button{
+    background-color: aliceblue;
+    padding: 10px;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+button:hover{
+    background-color: rgb(146, 196, 240);
+}
+
+header{
+    border: 3px solid black;
+    text-align: center;
+    color: aliceblue;
+    background-color: rgb(5, 44, 80);
+}
+
+/*Instruments Bar*/
+.instrWindowd{
+    border: 3px solid black;
+    padding: 10px;
+    background-color: rgb(17, 88, 155);
+}
+
+
+/*Work window*/
+main{
+    display: flex;
+    border: 3px solid black;
+}
+/*Окно редактирования заметок*/
+.editWindow{
+    display: flex;
+    flex-flow: column;
+    flex:4;
+    border: 3px solid black;
+    margin: 10px;
+}
+#iTitle{
+    font-size: 25px;
+    font-weight: bolder;
+    padding: 5px;
+    flex:1;
+    resize: none;
+}
+#iText{
+    position: relative;
+    font-style: italic ;
+    font-size: 13px;
+    height: 100%;
+    width: 100%;
+    flex:100;
+    resize: none;
+    overflow: scroll;
+}
+
+/*Окно с заметками*/
+.listWindow{
+    flex:1;
+    padding: 10px;
+    list-style: none;
+    border: 3px solid black;
+    margin: 10px;
+    background-color: aliceblue;
+}
+.listWindow li{
+    border: 3px solid black;
+    padding: 5px;
+    margin: 10px;
+}
+
+.listWindow li:hover{
+    background-color: rgb(15, 15, 105);
+    color: aliceblue;
+}
+
+@media(max-width:720px){
+
+    main{
+        display: flex;
+        flex-flow: column-reverse;
+    }
+}

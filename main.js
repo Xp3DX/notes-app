@@ -30,7 +30,7 @@ function openNote(event){
 
 //Добаление заметки на основе текущих данных
 function addNote(){
-
+    var v
 }
 
 //Функция инцилизации программы
