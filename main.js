@@ -25,12 +25,18 @@ function delNote(){
 }
 //Функция открытия заметки
 function openNote(event){
-
+    
 }
 
 //Добаление заметки на основе текущих данных
 function addNote(){
-    var v
+    var newNote= document.createElement("li");
+    var title=iTitle.value;
+    var text=iText.value;
+    var note=new Note(title, text);
+    newNote.textContent = title;
+    newNote.className=baseNote.push(note);
+    listWindow.appendChild(newNote);
 }
 
 //Функция инцилизации программы
