@@ -25,7 +25,9 @@ function delNote(){
 }
 //Функция открытия заметки
 function openNote(event){
-    
+   var num=parseInt(event.target.className)-1;
+   iTitle.value=baseNote[num]["title"];
+   iText.value=baseNote[num]["text"];
 }
 
 //Добаление заметки на основе текущих данных
@@ -36,6 +38,7 @@ function addNote(){
     var note=new Note(title, text);
     newNote.textContent = title;
     newNote.className=baseNote.push(note);
+    newNote.onclick=function(){openNote(event);};
     listWindow.appendChild(newNote);
 }
 
