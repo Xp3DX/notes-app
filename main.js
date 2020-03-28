@@ -1,20 +1,20 @@
-const listWindow= document.querySelector('.listWindow');
-const iTitle= document.querySelector('#iTitle');
-const iText = document.querySelector('#iText');
-const btSave = document.querySelector('.SAVE');
-const btAdd= document.querySelector('.ADD');
-const btDel = document.querySelector('.DEL');
+const listWindow= document.querySelector('.listWindow');//Window for note's list
+const iTitle= document.querySelector('#iTitle');//Textare for note's title
+const iText = document.querySelector('#iText');//Textare for note's text
+const btSave = document.querySelector('.SAVE'); //Button 'Save'
+const btAdd= document.querySelector('.ADD');//Button 'Add'
+const btDel = document.querySelector('.DEL');//Button 'Delete'
 
-var viewNT; //Заголовок последней заметки
-var baseNote=[]; //База данных заметок
+var viewNT; //ID Last Note
+var baseNote=[]; //Data Base for Notes
 
-//Объект заметки
+//Object Notes
 function Note(title,text){
-    this.title=title;
-    this.text= text;
+    this.title=title;//Title note
+    this.text= text;//Text note
 }
 
-//Функция сохранения текущей заметки
+//Save current note
 function saveNote(){
   var text=iText.value;
   var title= iTitle.value;
@@ -25,11 +25,15 @@ function saveNote(){
   
     
 }
-//Функция удаления текущей заметки
+//Delete current note
 function delNote(){
- 
+    iText.value='';
+    iTitle.value='';
+    listWindow.removeChild(listWindow.querySelector('._'+viewNT));
+    delete baseNote[viewNT-1];
+    viewNT=0;   
 }
-//Функция открытия заметки
+//Open note in listWindow
 function openNote(event){
    var num=parseInt(event.target.className.slice(1,event.target.className.length))-1;
    iTitle.value=baseNote[num]["title"];
@@ -37,7 +41,7 @@ function openNote(event){
    viewNT=num+1;
 }
 
-//Добаление заметки на основе текущих данных
+//Add new note
 function addNote(){
     var newNote= document.createElement("li");
     var title=iTitle.value;
@@ -50,7 +54,7 @@ function addNote(){
     viewNT=parseInt(newNote.className.slice(1,newNote.className.length));
 }
 
-//Функция инцилизации программы
+//Start programm and initialization buttons events
 function Program(){
 
     btAdd.onclick= addNote; 
@@ -60,5 +64,3 @@ function Program(){
 
 Program();
 
-
-//3)TODO: переделать функцию удалёния
