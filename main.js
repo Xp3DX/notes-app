@@ -16,6 +16,12 @@ function Note(title,text){
 
 //Функция сохранения текущей заметки
 function saveNote(){
+  var text=iText.value;
+  var title= iTitle.value;
+  var listNote= listWindow.querySelector('._'+viewNT);
+  baseNote[viewNT-1]['title']=title;
+  baseNote[viewNT-1]['text']=text;
+  listNote.textContent=title;
   
     
 }
@@ -25,9 +31,10 @@ function delNote(){
 }
 //Функция открытия заметки
 function openNote(event){
-   var num=parseInt(event.target.className)-1;
+   var num=parseInt(event.target.className.slice(1,event.target.className.length))-1;
    iTitle.value=baseNote[num]["title"];
    iText.value=baseNote[num]["text"];
+   viewNT=num+1;
 }
 
 //Добаление заметки на основе текущих данных
@@ -37,9 +44,10 @@ function addNote(){
     var text=iText.value;
     var note=new Note(title, text);
     newNote.textContent = title;
-    newNote.className=baseNote.push(note);
+    newNote.className='_'+baseNote.push(note);
     newNote.onclick=function(){openNote(event);};
     listWindow.appendChild(newNote);
+    viewNT=parseInt(newNote.className.slice(1,newNote.className.length));
 }
 
 //Функция инцилизации программы
