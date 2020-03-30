@@ -48,7 +48,21 @@ function openNote(event) {
 }
 
 //Search notes by title
-function searchNote(title) {
+function searchNote(request) {
+    var reg = new RegExp(request, 'i');
+    var lists = listWindow.childNodes;
+    var lister = "HJee";
+    lister.search(request)
+    for (let i = 0; i < lists.length; i++) {
+        if (baseNote[i]['title'].search(reg) === -1) {
+            lists[i].style.display = 'none';
+            continue;
+        } else {
+            lists[i].style.display = 'block';
+        }
+
+    }
+
 
 }
 
@@ -71,6 +85,10 @@ function Program() {
     btAdd.onclick = addNote;
     btSave.onclick = saveNote;
     btDel.onclick = delNote;
+    btSearch.onclick = function () {
+        var request = iSearch.value;
+        searchNote(request);
+    }
 }
 
 Program();
